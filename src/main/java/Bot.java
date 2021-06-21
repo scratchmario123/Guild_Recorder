@@ -10,14 +10,14 @@ public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[]{new GuildCMD(),new Duels(),new Help(),new Commands()};
     public static JDA jda;
-    
+
 
     public Bot() {
 
     }
 
     public void start() {
-        JDABuilder jdaBuilder = JDABuilder.createDefault(TOKEN);
+        JDABuilder jdaBuilder = JDABuilder.createDefault(TOKEN);//token for bot
 
         jdaBuilder.addEventListeners(listenerAdapters);
 
