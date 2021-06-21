@@ -1,5 +1,6 @@
-import net.dv8tion.jda.api.JDA;
+package Main;
 
+import Main.Bot;
 
 
 public class RecorderMain {
