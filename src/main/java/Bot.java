@@ -9,7 +9,7 @@ import javax.security.auth.login.LoginException;
 public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[]{new GuildCMD(),new Duels(),new Help(),new Commands()};
-    String TOKEN = "ODAwOTI5NTMwNTkxNDQ1MDE0.YAZRwA.eU8i49mok6hr2InXaXu6IvX2z0M";
+
     public static JDA jda;
 
 
