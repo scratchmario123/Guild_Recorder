@@ -17,7 +17,7 @@ public class Bot {
     }
 
     public void start() {
-        JDABuilder jdaBuilder = JDABuilder.createDefault(TOKEN);//test commit
+        JDABuilder jdaBuilder = JDABuilder.createDefault(TOKEN);
 
         jdaBuilder.addEventListeners(listenerAdapters);
 
