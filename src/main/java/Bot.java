@@ -9,6 +9,7 @@ import javax.security.auth.login.LoginException;
 public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[]{new GuildCMD(),new Duels(),new Help(),new Commands()};
+    public static String token = System.getenv("TOKEN");
 
     public static JDA jda;
 
@@ -18,7 +19,7 @@ public class Bot {
     }
 
     public void start() {
-        JDABuilder jdaBuilder = JDABuilder.createDefault(TOKEN);//token
+        JDABuilder jdaBuilder = JDABuilder.createDefault(token);//token
 
         jdaBuilder.addEventListeners(listenerAdapters);
 
