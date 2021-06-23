@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>ERPG Practice Dungeons</artifactId>
+    <artifactId>Guild-Recorder</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
