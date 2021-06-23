@@ -19,6 +19,7 @@ public class Bot {
     }
 
     public void start() {
+
         JDABuilder jdaBuilder = JDABuilder.createDefault(token);//token
 
         jdaBuilder.addEventListeners(listenerAdapters);

@@ -11,8 +11,11 @@ public class Commands extends ListenerAdapter {
 
         String[] args = event.getMessage().getContentRaw().split(" ");
 
+        if (event.getMessage().getContentRaw().startsWith("*type")) {
+            event.getGuild().getTextChannelById(856142430109696020L).sendMessage(args[1]).queue();
+            event.getChannel().deleteMessageById(event.getMessage().getIdLong()).queue();
 
-        if (event.getMessage().getContentRaw().startsWith("*removeMember")) {
+        } else if (event.getMessage().getContentRaw().startsWith("*removeMember")) {
             if (args.length != 2 || event.getMessage().getMentionedMembers().size() == 0) {//how can i know if there are no pings
                 event.getChannel().sendMessage("Correct Usage: `*removeMember [@user]`\nFor more commands and info, do `*help`").queue();
             } else {

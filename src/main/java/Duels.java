@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public class Duels extends ListenerAdapter {
 
     long duelChannelId = 807808741402738708L;
-    long duelListId = 846288744088469505L;
+    long duelLogId = 857146759330267136L;
 
     String memberName;
 
@@ -14,8 +14,7 @@ public class Duels extends ListenerAdapter {
         memberName = event.getMember().getUser().getName();
         if (event.getChannel().getIdLong() == duelChannelId) {
             if (event.getMessage().getContentRaw().contains(memberName) || event.getMessage().getAttachments().size() > 0) {
-                TextChannel duelListTempId = event.getGuild().getTextChannelById(847004694407544844L);
-                duelListTempId.sendMessage("`"+ event.getMember().getUser().getAsTag() + "` just dueled!").queue();
+                event.getGuild().getTextChannelById(duelLogId).sendMessage("`"+ event.getMember().getUser().getAsTag() + "` just dueled!").queue();
             }
         }
     }

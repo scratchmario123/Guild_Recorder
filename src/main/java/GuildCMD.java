@@ -1,9 +1,6 @@
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.EmbedType;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -15,7 +12,9 @@ import java.util.*;
 public class GuildCMD extends ListenerAdapter {
 
     long guildChannelId = 847004694407544844L;
-    long guildListId = 846655829771812904L;
+    long guildLogId = 857147303264649216L;
+
+    long epicRpg = 555955826880413696L;
 
     public static HashMap<Long,Integer> memberTimes = new HashMap<>();//reworked with db
 
@@ -23,6 +22,7 @@ public class GuildCMD extends ListenerAdapter {
     Member members;
     String author;
     String authorIdTag;
+
     boolean needPut = true;
 
     long guildMessageId;
@@ -40,7 +40,7 @@ public class GuildCMD extends ListenerAdapter {
 
 
 
-    public void update() {
+    /*public void update() {
         System.out.println(guildMessageId + " entered update()");
         if (needPut) {
 
@@ -98,7 +98,7 @@ public class GuildCMD extends ListenerAdapter {
 
     public void put() {
 
-    }
+    }*/
 
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
@@ -112,17 +112,19 @@ public class GuildCMD extends ListenerAdapter {
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        System.out.println("back");
+                        Bot.jda.retrieveUserById(queue.get(0)).map(User::getAsTag).queue(authorIdTag -> {
+                            event.getGuild().getTextChannelById(guildLogId).sendMessage("`"+ authorIdTag + "` raided/upgraded! (2 hours ago)").queue();
+                        });
                         //add the person remaining in the list to the database
                         //send updated message
                     }
                 };
-                timer.schedule(task,3599999L);
+                timer.schedule(task,71999999L);
 
 
 
 
-            } else if(event.getMessage().getEmbeds().size() > 0 && event.getMessage().getMember().getIdLong() == 555955826880413696L) {
+            } else if(event.getMessage().getEmbeds().size() > 0 && event.getMessage().getMember().getIdLong() == epicRpg) {
                 try {
                     if (event.getMessage().getEmbeds().get(0).getTitle().startsWith("Your guild has already raided or been upgraded")) {
                         author = event.getMessage().getEmbeds().get(0).getAuthor().getName().split("'s")[0];
@@ -142,9 +144,9 @@ public class GuildCMD extends ListenerAdapter {
                     timer.cancel();
                     //stop the timer task!!!
                 }
-            } else if(event.getMessage().getContentRaw().contains("end your previous command")&& event.getMessage().getMember().getIdLong() == 555955826880413696L) {
-                authorIdTag = event.getMessage().getContentRaw().split(",")[0].split("<@!")[1].split(">")[0];
-                queue.remove(member.getIdLong());
+            } else if(event.getMessage().getContentRaw().contains("end your previous command")&& event.getMessage().getMember().getIdLong() == epicRpg) {
+                queue.remove(event.getMessage().getMentionedMembers().get(0).getUser().getIdLong());
+
 
                 if (queue.size() == 0) {
                     timer.cancel();

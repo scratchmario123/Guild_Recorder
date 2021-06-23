@@ -21,7 +21,7 @@ public class Help extends ListenerAdapter {
                 help.setTitle("Help Menu:");
                 help.setDescription("My prefix is `*`");
                 help.addField("Commands: ", "`help`, `info`, `stats`, `duelStatus`", false);
-                help.addField("Admin commands: ", "`removeMember`, `addMember`, `warn`", false);
+                help.addField("Admin commands: ", "`removeMember`, `addMember`, `warn`, `type`", false);
                 help.setFooter("If you want specific information for each command, type '*help [Command Name]'.");
                 event.getChannel().sendMessage(help.build()).queue();
             } else if(args.length == 2) {
@@ -55,6 +55,8 @@ public class Help extends ListenerAdapter {
                     case "warn":
                         event.getChannel().sendMessage(buildEmbed(avatarUrl,authorName,"`*warn`","Usage: *warn [@User]\n\nWarn a guild member.\nRequires ADMINISTRATOR permission.")).queue();
                         break;
+                    case "type":
+                        event.getChannel().sendMessage(buildEmbed(avatarUrl,authorName,"`type`","Usage: *type [message]\n\nSends a message to <#856142430109696020>\nRequires ADMINSTRATOR permission")).queue();
                     default:
                         event.getChannel().sendMessage("Sorry, but there is no such command.").queue();
                 }
