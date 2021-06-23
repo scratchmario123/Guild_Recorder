@@ -110,6 +110,7 @@ public class GuildCMD extends ListenerAdapter {
                         Bot.jda.retrieveUserById(queue.get(0)).map(User::getAsTag).queue(authorIdTag -> {
                             event.getGuild().getTextChannelById(guildLogId).sendMessage("`"+ authorIdTag + "` raided/upgraded! (2 hours ago)").queue();
                         });
+                        queue.clear();
                         //add the person remaining in the list to the database
                         //send updated message
                     }
