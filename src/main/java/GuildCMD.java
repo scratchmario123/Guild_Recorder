@@ -21,11 +21,6 @@ public class GuildCMD extends ListenerAdapter {
     Member member;
     Member members;
     String author;
-    String authorIdTag;
-
-    boolean needPut = true;
-
-    long guildMessageId;
 
     List<Long> queue = new ArrayList<>();//add to db
 

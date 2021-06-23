@@ -56,7 +56,8 @@ public class Help extends ListenerAdapter {
                         event.getChannel().sendMessage(buildEmbed(avatarUrl,authorName,"`*warn`","Usage: *warn [@User]\n\nWarn a guild member.\nRequires ADMINISTRATOR permission.")).queue();
                         break;
                     case "type":
-                        event.getChannel().sendMessage(buildEmbed(avatarUrl,authorName,"`type`","Usage: *type [message]\n\nSends a message to <#856142430109696020>\nRequires ADMINSTRATOR permission")).queue();
+                        event.getChannel().sendMessage(buildEmbed(avatarUrl,authorName,"`*type`","Usage: *type [message]\n\nSends a message to <#856142430109696020>\nRequires ADMINSTRATOR permission")).queue();
+                        break;
                     default:
                         event.getChannel().sendMessage("Sorry, but there is no such command.").queue();
                 }
