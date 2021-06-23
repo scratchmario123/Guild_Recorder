@@ -11,8 +11,8 @@ public class Duels extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        memberName = event.getMember().getUser().getName();
         if (event.getChannel().getIdLong() == duelChannelId) {
+            memberName = event.getMember().getUser().getName();
             if (event.getMessage().getContentRaw().contains(memberName) || event.getMessage().getAttachments().size() > 0) {
                 event.getGuild().getTextChannelById(duelLogId).sendMessage("`"+ event.getMember().getUser().getAsTag() + "` just dueled!").queue();
             }
